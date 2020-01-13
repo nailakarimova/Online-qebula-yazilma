@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c04e471c04cd417495cb5514e8296f78" Name="Diagram1">
+        <EntityTypeShape EntityType="QachqinKomModel.Istifadechiler" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="QachqinKomModel.Istiqamet" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QachqinKomModel.Kateqoriya" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QachqinKomModel.Kochkun_dushduyu_rayon" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QachqinKomModel.Meskunlashdigi_rayon" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QachqinKomModel.Qebul" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QachqinKomModel.Sosial_durum" Width="1.5" PointX="5.375" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="QachqinKomModel.FK_Qebul_Istifadechiler" ManuallyRouted="false" />
+        <AssociationConnector Association="QachqinKomModel.FK_Qebul_Istifadechiler1" ManuallyRouted="false" />
+        <AssociationConnector Association="QachqinKomModel.FK_Qebul_Istiqamet" ManuallyRouted="false" />
+        <AssociationConnector Association="QachqinKomModel.FK_Qebul_Kateqoriya" ManuallyRouted="false" />
+        <AssociationConnector Association="QachqinKomModel.FK_Qebul_Kochkun_dushduyu_rayon" ManuallyRouted="false" />
+        <AssociationConnector Association="QachqinKomModel.FK_Qebul_Meskunlashdigi_rayon" ManuallyRouted="false" />
+        <AssociationConnector Association="QachqinKomModel.FK_Qebul_Sosial_durum" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

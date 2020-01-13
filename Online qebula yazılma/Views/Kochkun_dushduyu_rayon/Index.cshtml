@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Online_qebula_yazılma.Models.Kochkun_dushduyu_rayon>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.rayon_adi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.rayon_adi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.kochkun_rayon_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.kochkun_rayon_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.kochkun_rayon_id })
+        </td>
+    </tr>
+}
+
+</table>

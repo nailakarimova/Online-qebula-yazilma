@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="QachqinKomModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Istifadechiler">
+          <Key>
+            <PropertyRef Name="istifadechi_id" />
+          </Key>
+          <Property Name="istifadechi_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="istifadechi_adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="istifadechi_novu" Type="bit" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="soyad" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="shifre" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Istiqamet">
+          <Key>
+            <PropertyRef Name="istiqamet_id" />
+          </Key>
+          <Property Name="istiqamet_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="istiqamet_adi" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kateqoriya">
+          <Key>
+            <PropertyRef Name="kateqoriya_id" />
+          </Key>
+          <Property Name="kateqoriya_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kateqoriya_adi" Type="nvarchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kochkun_dushduyu_rayon">
+          <Key>
+            <PropertyRef Name="kochkun_rayon_id" />
+          </Key>
+          <Property Name="kochkun_rayon_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rayon_adi" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Meskunlashdigi_rayon">
+          <Key>
+            <PropertyRef Name="meskunlashdigi_rayon_id" />
+          </Key>
+          <Property Name="meskunlashdigi_rayon_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rayon_adi" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Qebul">
+          <Key>
+            <PropertyRef Name="qebul_id" />
+          </Key>
+          <Property Name="qebul_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="istifadechi_id" Type="int" Nullable="false" />
+          <Property Name="ad_soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="dogum_tarixi" Type="date" Nullable="false" />
+          <Property Name="sh_vesiqesi_no" Type="int" Nullable="false" />
+          <Property Name="fin" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="mobile" Type="int" Nullable="false" />
+          <Property Name="phone" Type="int" Nullable="false" />
+          <Property Name="kochkun_rayon_id" Type="int" Nullable="false" />
+          <Property Name="meskunlashdigi_rayon_id" Type="int" Nullable="false" />
+          <Property Name="unvan" Type="nvarchar" MaxLength="70" Nullable="false" />
+          <Property Name="durum_id" Type="int" Nullable="false" />
+          <Property Name="kateqoriya_id" Type="int" Nullable="false" />
+          <Property Name="istiqamet_id" Type="int" Nullable="false" />
+          <Property Name="qebul_eden_id" Type="int" Nullable="false" />
+          <Property Name="qebul_date" Type="datetime" Nullable="false" />
+          <Property Name="qeyd" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Sosial_durum">
+          <Key>
+            <PropertyRef Name="durum_id" />
+          </Key>
+          <Property Name="durum_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="durum_adi" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Qebul_Istifadechiler">
+          <End Role="Istifadechiler" Type="Self.Istifadechiler" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istifadechiler">
+              <PropertyRef Name="istifadechi_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="istifadechi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Istifadechiler1">
+          <End Role="Istifadechiler" Type="Self.Istifadechiler" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istifadechiler">
+              <PropertyRef Name="istifadechi_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="qebul_eden_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Istiqamet">
+          <End Role="Istiqamet" Type="Self.Istiqamet" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istiqamet">
+              <PropertyRef Name="istiqamet_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="istiqamet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Kateqoriya">
+          <End Role="Kateqoriya" Type="Self.Kateqoriya" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kateqoriya">
+              <PropertyRef Name="kateqoriya_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="kateqoriya_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Kochkun_dushduyu_rayon">
+          <End Role="Kochkun_dushduyu_rayon" Type="Self.Kochkun_dushduyu_rayon" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kochkun_dushduyu_rayon">
+              <PropertyRef Name="kochkun_rayon_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="kochkun_rayon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Meskunlashdigi_rayon">
+          <End Role="Meskunlashdigi_rayon" Type="Self.Meskunlashdigi_rayon" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meskunlashdigi_rayon">
+              <PropertyRef Name="meskunlashdigi_rayon_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="meskunlashdigi_rayon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Sosial_durum">
+          <End Role="Sosial_durum" Type="Self.Sosial_durum" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sosial_durum">
+              <PropertyRef Name="durum_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="durum_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QachqinKomModelStoreContainer">
+          <EntitySet Name="Istifadechiler" EntityType="Self.Istifadechiler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Istiqamet" EntityType="Self.Istiqamet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kateqoriya" EntityType="Self.Kateqoriya" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kochkun_dushduyu_rayon" EntityType="Self.Kochkun_dushduyu_rayon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Meskunlashdigi_rayon" EntityType="Self.Meskunlashdigi_rayon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Qebul" EntityType="Self.Qebul" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sosial_durum" EntityType="Self.Sosial_durum" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Qebul_Istifadechiler" Association="Self.FK_Qebul_Istifadechiler">
+            <End Role="Istifadechiler" EntitySet="Istifadechiler" />
+            <End Role="Qebul" EntitySet="Qebul" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Istifadechiler1" Association="Self.FK_Qebul_Istifadechiler1">
+            <End Role="Istifadechiler" EntitySet="Istifadechiler" />
+            <End Role="Qebul" EntitySet="Qebul" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Istiqamet" Association="Self.FK_Qebul_Istiqamet">
+            <End Role="Istiqamet" EntitySet="Istiqamet" />
+            <End Role="Qebul" EntitySet="Qebul" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Kateqoriya" Association="Self.FK_Qebul_Kateqoriya">
+            <End Role="Kateqoriya" EntitySet="Kateqoriya" />
+            <End Role="Qebul" EntitySet="Qebul" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Kochkun_dushduyu_rayon" Association="Self.FK_Qebul_Kochkun_dushduyu_rayon">
+            <End Role="Kochkun_dushduyu_rayon" EntitySet="Kochkun_dushduyu_rayon" />
+            <End Role="Qebul" EntitySet="Qebul" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Meskunlashdigi_rayon" Association="Self.FK_Qebul_Meskunlashdigi_rayon">
+            <End Role="Meskunlashdigi_rayon" EntitySet="Meskunlashdigi_rayon" />
+            <End Role="Qebul" EntitySet="Qebul" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Sosial_durum" Association="Self.FK_Qebul_Sosial_durum">
+            <End Role="Sosial_durum" EntitySet="Sosial_durum" />
+            <End Role="Qebul" EntitySet="Qebul" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QachqinKomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Istifadechiler">
+          <Key>
+            <PropertyRef Name="istifadechi_id" />
+          </Key>
+          <Property Name="istifadechi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="istifadechi_adi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="istifadechi_novu" Type="Boolean" />
+          <NavigationProperty Name="Qebuls" Relationship="Self.FK_Qebul_Istifadechiler" FromRole="Istifadechiler" ToRole="Qebul" />
+          <NavigationProperty Name="Qebuls1" Relationship="Self.FK_Qebul_Istifadechiler1" FromRole="Istifadechiler" ToRole="Qebul" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="soyad" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="shifre" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Istiqamet">
+          <Key>
+            <PropertyRef Name="istiqamet_id" />
+          </Key>
+          <Property Name="istiqamet_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="istiqamet_adi" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Qebuls" Relationship="Self.FK_Qebul_Istiqamet" FromRole="Istiqamet" ToRole="Qebul" />
+        </EntityType>
+        <EntityType Name="Kateqoriya">
+          <Key>
+            <PropertyRef Name="kateqoriya_id" />
+          </Key>
+          <Property Name="kateqoriya_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kateqoriya_adi" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Qebuls" Relationship="Self.FK_Qebul_Kateqoriya" FromRole="Kateqoriya" ToRole="Qebul" />
+        </EntityType>
+        <EntityType Name="Kochkun_dushduyu_rayon">
+          <Key>
+            <PropertyRef Name="kochkun_rayon_id" />
+          </Key>
+          <Property Name="kochkun_rayon_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rayon_adi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Qebuls" Relationship="Self.FK_Qebul_Kochkun_dushduyu_rayon" FromRole="Kochkun_dushduyu_rayon" ToRole="Qebul" />
+        </EntityType>
+        <EntityType Name="Meskunlashdigi_rayon">
+          <Key>
+            <PropertyRef Name="meskunlashdigi_rayon_id" />
+          </Key>
+          <Property Name="meskunlashdigi_rayon_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rayon_adi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Qebuls" Relationship="Self.FK_Qebul_Meskunlashdigi_rayon" FromRole="Meskunlashdigi_rayon" ToRole="Qebul" />
+        </EntityType>
+        <EntityType Name="Qebul">
+          <Key>
+            <PropertyRef Name="qebul_id" />
+          </Key>
+          <Property Name="qebul_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="istifadechi_id" Type="Int32" Nullable="false" />
+          <Property Name="ad_soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dogum_tarixi" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="sh_vesiqesi_no" Type="Int32" Nullable="false" />
+          <Property Name="fin" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="mobile" Type="Int32" Nullable="false" />
+          <Property Name="phone" Type="Int32" Nullable="false" />
+          <Property Name="kochkun_rayon_id" Type="Int32" Nullable="false" />
+          <Property Name="meskunlashdigi_rayon_id" Type="Int32" Nullable="false" />
+          <Property Name="unvan" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="durum_id" Type="Int32" Nullable="false" />
+          <Property Name="kateqoriya_id" Type="Int32" Nullable="false" />
+          <Property Name="istiqamet_id" Type="Int32" Nullable="false" />
+          <Property Name="qebul_eden_id" Type="Int32" Nullable="false" />
+          <Property Name="qebul_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="qeyd" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Istifadechiler" Relationship="Self.FK_Qebul_Istifadechiler" FromRole="Qebul" ToRole="Istifadechiler" />
+          <NavigationProperty Name="Istifadechiler1" Relationship="Self.FK_Qebul_Istifadechiler1" FromRole="Qebul" ToRole="Istifadechiler" />
+          <NavigationProperty Name="Istiqamet" Relationship="Self.FK_Qebul_Istiqamet" FromRole="Qebul" ToRole="Istiqamet" />
+          <NavigationProperty Name="Kateqoriya" Relationship="Self.FK_Qebul_Kateqoriya" FromRole="Qebul" ToRole="Kateqoriya" />
+          <NavigationProperty Name="Kochkun_dushduyu_rayon" Relationship="Self.FK_Qebul_Kochkun_dushduyu_rayon" FromRole="Qebul" ToRole="Kochkun_dushduyu_rayon" />
+          <NavigationProperty Name="Meskunlashdigi_rayon" Relationship="Self.FK_Qebul_Meskunlashdigi_rayon" FromRole="Qebul" ToRole="Meskunlashdigi_rayon" />
+          <NavigationProperty Name="Sosial_durum" Relationship="Self.FK_Qebul_Sosial_durum" FromRole="Qebul" ToRole="Sosial_durum" />
+        </EntityType>
+        <EntityType Name="Sosial_durum">
+          <Key>
+            <PropertyRef Name="durum_id" />
+          </Key>
+          <Property Name="durum_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="durum_adi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Qebuls" Relationship="Self.FK_Qebul_Sosial_durum" FromRole="Sosial_durum" ToRole="Qebul" />
+        </EntityType>
+        <Association Name="FK_Qebul_Istifadechiler">
+          <End Role="Istifadechiler" Type="Self.Istifadechiler" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istifadechiler">
+              <PropertyRef Name="istifadechi_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="istifadechi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Istifadechiler1">
+          <End Role="Istifadechiler" Type="Self.Istifadechiler" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istifadechiler">
+              <PropertyRef Name="istifadechi_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="qebul_eden_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Istiqamet">
+          <End Role="Istiqamet" Type="Self.Istiqamet" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Istiqamet">
+              <PropertyRef Name="istiqamet_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="istiqamet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Kateqoriya">
+          <End Role="Kateqoriya" Type="Self.Kateqoriya" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kateqoriya">
+              <PropertyRef Name="kateqoriya_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="kateqoriya_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Kochkun_dushduyu_rayon">
+          <End Role="Kochkun_dushduyu_rayon" Type="Self.Kochkun_dushduyu_rayon" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kochkun_dushduyu_rayon">
+              <PropertyRef Name="kochkun_rayon_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="kochkun_rayon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Meskunlashdigi_rayon">
+          <End Role="Meskunlashdigi_rayon" Type="Self.Meskunlashdigi_rayon" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meskunlashdigi_rayon">
+              <PropertyRef Name="meskunlashdigi_rayon_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="meskunlashdigi_rayon_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Qebul_Sosial_durum">
+          <End Role="Sosial_durum" Type="Self.Sosial_durum" Multiplicity="1" />
+          <End Role="Qebul" Type="Self.Qebul" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sosial_durum">
+              <PropertyRef Name="durum_id" />
+            </Principal>
+            <Dependent Role="Qebul">
+              <PropertyRef Name="durum_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QachqinKomEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Istifadechilers" EntityType="Self.Istifadechiler" />
+          <EntitySet Name="Istiqamets" EntityType="Self.Istiqamet" />
+          <EntitySet Name="Kateqoriyas" EntityType="Self.Kateqoriya" />
+          <EntitySet Name="Kochkun_dushduyu_rayon" EntityType="Self.Kochkun_dushduyu_rayon" />
+          <EntitySet Name="Meskunlashdigi_rayon" EntityType="Self.Meskunlashdigi_rayon" />
+          <EntitySet Name="Qebuls" EntityType="Self.Qebul" />
+          <EntitySet Name="Sosial_durum" EntityType="Self.Sosial_durum" />
+          <AssociationSet Name="FK_Qebul_Istifadechiler" Association="Self.FK_Qebul_Istifadechiler">
+            <End Role="Istifadechiler" EntitySet="Istifadechilers" />
+            <End Role="Qebul" EntitySet="Qebuls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Istifadechiler1" Association="Self.FK_Qebul_Istifadechiler1">
+            <End Role="Istifadechiler" EntitySet="Istifadechilers" />
+            <End Role="Qebul" EntitySet="Qebuls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Istiqamet" Association="Self.FK_Qebul_Istiqamet">
+            <End Role="Istiqamet" EntitySet="Istiqamets" />
+            <End Role="Qebul" EntitySet="Qebuls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Kateqoriya" Association="Self.FK_Qebul_Kateqoriya">
+            <End Role="Kateqoriya" EntitySet="Kateqoriyas" />
+            <End Role="Qebul" EntitySet="Qebuls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Kochkun_dushduyu_rayon" Association="Self.FK_Qebul_Kochkun_dushduyu_rayon">
+            <End Role="Kochkun_dushduyu_rayon" EntitySet="Kochkun_dushduyu_rayon" />
+            <End Role="Qebul" EntitySet="Qebuls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Meskunlashdigi_rayon" Association="Self.FK_Qebul_Meskunlashdigi_rayon">
+            <End Role="Meskunlashdigi_rayon" EntitySet="Meskunlashdigi_rayon" />
+            <End Role="Qebul" EntitySet="Qebuls" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Qebul_Sosial_durum" Association="Self.FK_Qebul_Sosial_durum">
+            <End Role="Sosial_durum" EntitySet="Sosial_durum" />
+            <End Role="Qebul" EntitySet="Qebuls" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QachqinKomModelStoreContainer" CdmEntityContainer="QachqinKomEntities">
+          <EntitySetMapping Name="Istifadechilers">
+            <EntityTypeMapping TypeName="QachqinKomModel.Istifadechiler">
+              <MappingFragment StoreEntitySet="Istifadechiler">
+                <ScalarProperty Name="shifre" ColumnName="shifre" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="istifadechi_id" ColumnName="istifadechi_id" />
+                <ScalarProperty Name="istifadechi_adi" ColumnName="istifadechi_adi" />
+                <ScalarProperty Name="istifadechi_novu" ColumnName="istifadechi_novu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Istiqamets">
+            <EntityTypeMapping TypeName="QachqinKomModel.Istiqamet">
+              <MappingFragment StoreEntitySet="Istiqamet">
+                <ScalarProperty Name="istiqamet_id" ColumnName="istiqamet_id" />
+                <ScalarProperty Name="istiqamet_adi" ColumnName="istiqamet_adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kateqoriyas">
+            <EntityTypeMapping TypeName="QachqinKomModel.Kateqoriya">
+              <MappingFragment StoreEntitySet="Kateqoriya">
+                <ScalarProperty Name="kateqoriya_id" ColumnName="kateqoriya_id" />
+                <ScalarProperty Name="kateqoriya_adi" ColumnName="kateqoriya_adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kochkun_dushduyu_rayon">
+            <EntityTypeMapping TypeName="QachqinKomModel.Kochkun_dushduyu_rayon">
+              <MappingFragment StoreEntitySet="Kochkun_dushduyu_rayon">
+                <ScalarProperty Name="kochkun_rayon_id" ColumnName="kochkun_rayon_id" />
+                <ScalarProperty Name="rayon_adi" ColumnName="rayon_adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meskunlashdigi_rayon">
+            <EntityTypeMapping TypeName="QachqinKomModel.Meskunlashdigi_rayon">
+              <MappingFragment StoreEntitySet="Meskunlashdigi_rayon">
+                <ScalarProperty Name="meskunlashdigi_rayon_id" ColumnName="meskunlashdigi_rayon_id" />
+                <ScalarProperty Name="rayon_adi" ColumnName="rayon_adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Qebuls">
+            <EntityTypeMapping TypeName="QachqinKomModel.Qebul">
+              <MappingFragment StoreEntitySet="Qebul">
+                <ScalarProperty Name="qebul_id" ColumnName="qebul_id" />
+                <ScalarProperty Name="istifadechi_id" ColumnName="istifadechi_id" />
+                <ScalarProperty Name="ad_soyad" ColumnName="ad_soyad" />
+                <ScalarProperty Name="dogum_tarixi" ColumnName="dogum_tarixi" />
+                <ScalarProperty Name="sh_vesiqesi_no" ColumnName="sh_vesiqesi_no" />
+                <ScalarProperty Name="fin" ColumnName="fin" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="kochkun_rayon_id" ColumnName="kochkun_rayon_id" />
+                <ScalarProperty Name="meskunlashdigi_rayon_id" ColumnName="meskunlashdigi_rayon_id" />
+                <ScalarProperty Name="unvan" ColumnName="unvan" />
+                <ScalarProperty Name="durum_id" ColumnName="durum_id" />
+                <ScalarProperty Name="kateqoriya_id" ColumnName="kateqoriya_id" />
+                <ScalarProperty Name="istiqamet_id" ColumnName="istiqamet_id" />
+                <ScalarProperty Name="qebul_eden_id" ColumnName="qebul_eden_id" />
+                <ScalarProperty Name="qebul_date" ColumnName="qebul_date" />
+                <ScalarProperty Name="qeyd" ColumnName="qeyd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sosial_durum">
+            <EntityTypeMapping TypeName="QachqinKomModel.Sosial_durum">
+              <MappingFragment StoreEntitySet="Sosial_durum">
+                <ScalarProperty Name="durum_id" ColumnName="durum_id" />
+                <ScalarProperty Name="durum_adi" ColumnName="durum_adi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

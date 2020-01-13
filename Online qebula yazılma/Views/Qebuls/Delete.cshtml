@@ -1,0 +1,160 @@
+﻿@model Online_qebula_yazılma.Models.Qebul
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Qebul</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ad_soyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ad_soyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dogum_tarixi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dogum_tarixi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sh_vesiqesi_no)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sh_vesiqesi_no)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mobile)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mobile)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.unvan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.unvan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qebul_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qebul_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qeyd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qeyd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Istifadechiler.istifadechi_adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Istifadechiler.istifadechi_adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Istifadechiler1.istifadechi_adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Istifadechiler1.istifadechi_adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Istiqamet.istiqamet_adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Istiqamet.istiqamet_adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kateqoriya.kateqoriya_adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kateqoriya.kateqoriya_adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kochkun_dushduyu_rayon.rayon_adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kochkun_dushduyu_rayon.rayon_adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Meskunlashdigi_rayon.rayon_adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Meskunlashdigi_rayon.rayon_adi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sosial_durum.durum_adi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sosial_durum.durum_adi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

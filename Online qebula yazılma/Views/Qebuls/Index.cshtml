@@ -1,0 +1,129 @@
+﻿@model IEnumerable<Online_qebula_yazılma.Models.Qebul>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ad_soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dogum_tarixi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sh_vesiqesi_no)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.mobile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.unvan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qebul_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.qeyd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Istifadechiler.istifadechi_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Istifadechiler1.istifadechi_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Istiqamet.istiqamet_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kateqoriya.kateqoriya_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kochkun_dushduyu_rayon.rayon_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Meskunlashdigi_rayon.rayon_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sosial_durum.durum_adi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ad_soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dogum_tarixi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sh_vesiqesi_no)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mobile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.unvan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qebul_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.qeyd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Istifadechiler.istifadechi_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Istifadechiler1.istifadechi_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Istiqamet.istiqamet_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kateqoriya.kateqoriya_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kochkun_dushduyu_rayon.rayon_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Meskunlashdigi_rayon.rayon_adi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sosial_durum.durum_adi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.qebul_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.qebul_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.qebul_id })
+        </td>
+    </tr>
+}
+
+</table>

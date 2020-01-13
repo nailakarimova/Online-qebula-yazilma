@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Online_qebula_yazılma.Models.Istifadechiler>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.istifadechi_adi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soyad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.istifadechi_adi)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.ad)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.soyad)
+        </th>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.istifadechi_id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.istifadechi_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.istifadechi_id })
+        </td>
+    </tr>
+}
+
+</table>
